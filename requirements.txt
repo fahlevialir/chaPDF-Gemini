@@ -7,3 +7,5 @@ openai
 faiss-cpu
 pypdf
 tiktoken
+torch == 1.12.1
+sentence-transformers
