@@ -1,5 +1,6 @@
 streamlit
 streamlit_chat
+langchain-community
 langchain
 langchain-google-genai
 openai
