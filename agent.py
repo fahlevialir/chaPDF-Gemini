@@ -13,11 +13,10 @@ from langchain import FAISS
 
 class Agent:
     def __init__(self, google_api_key: str | None = None) -> None:
-        # if openai_api_key is None, then it will look the enviroment variable OPENAI_API_KEY
-        self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-        self.llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",google_api_key=google_api_key)
-        # self.llm = OllamaLLM(model="llama3")
+        # if google_api_key is None, then it will look the enviroment variable GOOGLE_API_KEY
+        self.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2") #using hugging face as embedding model
+        self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200) # create chunks text
+        self.llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",google_api_key=google_api_key) # using gemini 1.5 flash for llm model
         self.chain = None
         self.db = None
 

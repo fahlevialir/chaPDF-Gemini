@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit_chat import message
 from agent import Agent
 
-st.set_page_config(page_title="ChatPDF")
+st.set_page_config(page_title="ChatPDF") #create title page
 
 
 def display_messages():
@@ -15,10 +15,10 @@ def display_messages():
 
 
 def process_input():
-    if st.session_state["user_input"] and len(st.session_state["user_input"].strip()) > 0:
-        user_text = st.session_state["user_input"].strip()
-        with st.session_state["thinking_spinner"], st.spinner(f"Thinking"):
-            agent_text = st.session_state["agent"].ask(user_text)
+    if st.session_state["user_input"] and len(st.session_state["user_input"].strip()) > 0: # set conditions user input and the text cant be zero
+        user_text = st.session_state["user_input"].strip() #take the user input
+        with st.session_state["thinking_spinner"], st.spinner(f"Thinking"): #create spinner
+            agent_text = st.session_state["agent"].ask(user_text) #sent user input to llm
 
         st.session_state["messages"].append((user_text, True))
         st.session_state["messages"].append((agent_text, False))
